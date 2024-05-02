@@ -49,8 +49,8 @@
         android:layout_height="67dp"
         android:indeterminate="false"
         android:indeterminateBehavior="repeat"
-        android:max="10"
-        android:progress="5"
+        android:max="100"
+        android:progress="100"
         android:progressDrawable="@android:drawable/progress_horizontal"
         android:progressTint="#4CAF50"
         android:scaleX="0.4"
@@ -67,33 +67,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hunger"
-        android:textSize="34sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintHorizontal_bias="0.183"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.59" />
+        app:layout_constraintVertical_bias="0.722" />
 
     <TextView
         android:id="@+id/cleanamount"
         android:layout_width="96dp"
         android:layout_height="48dp"
         android:text="Clean"
-        android:textSize="34sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.558"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.592" />
+        app:layout_constraintVertical_bias="0.739" />
 
     <TextView
         android:id="@+id/happyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Happy"
-        tools:layout_editor_absoluteX="281dp"
-        tools:layout_editor_absoluteY="419dp" />
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.807"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.722" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

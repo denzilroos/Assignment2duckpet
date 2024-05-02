@@ -19,6 +19,7 @@ class MyDuckling : AppCompatActivity() {
     private lateinit var cleanbut : Button
     private lateinit var cleanTextView : TextView
     private lateinit var happyTextView : TextView
+    private lateinit var playwithbut : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +30,10 @@ class MyDuckling : AppCompatActivity() {
         cleanTextView = findViewById(R.id.cleanamount)
         feedbut = findViewById(R.id.feedbtn)
         cleanbut = findViewById(R.id.cleanbtn)
+        playwithbut = findViewById(R.id.playbtn)
         happyTextView = findViewById(R.id.happyText)
+
+        hungerAmount = findViewById(R.id.progressBarhunger)
 
 
 
@@ -61,9 +65,12 @@ class MyDuckling : AppCompatActivity() {
         }
         while (enumber > 0 ) {
             enumber -= 1
+            if (enumber < 5) {
+                enumber = 5
+            }
             enumstr = enumber.toString()
             countTextView.text = enumstr
-
+hungerAmount.progress = enumber
             delay(100) // Delay for 100 milliseconds
         }
     }
@@ -80,6 +87,9 @@ class MyDuckling : AppCompatActivity() {
         }
         while (enumber2 > 0 ) {
             enumber2 -= 1
+            if (enumber2 < 5) {
+                enumber2 = 5
+            }
             enumstr2 = enumber2.toString()
             cleanTextView.text = enumstr2
 
@@ -90,7 +100,7 @@ class MyDuckling : AppCompatActivity() {
         var enumber3 = 100
         var enumstr3 :String
 
-        cleanbut.setOnClickListener{
+        playwithbut.setOnClickListener{
             enumber3 += 50
             if (enumber3 > 100){
                 enumber3 = 100
@@ -99,6 +109,9 @@ class MyDuckling : AppCompatActivity() {
         }
         while (enumber3 > 0 ) {
             enumber3 -= 1
+            if (enumber3 < 5) {
+                enumber3 = 5
+            }
             enumstr3 = enumber3.toString()
             happyTextView.text = enumstr3
 
