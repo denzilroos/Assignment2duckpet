@@ -1,16 +1,22 @@
 package com.example.assignment2petgame
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import kotlinx.coroutines.*
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isInvisible
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-
-abstract class MyDuckling : AppCompatActivity() {
-
-
+class testduck : AppCompatActivity() {
     private lateinit var hungerAmount: ProgressBar
     private lateinit var countTextView: TextView
     private lateinit var feedbut: Button
@@ -18,22 +24,32 @@ abstract class MyDuckling : AppCompatActivity() {
     private lateinit var playwithbut: Button
     private lateinit var cleanTextView: TextView
     private lateinit var happyTextView: TextView
-
-
+    private lateinit var duckdirtimg : ImageView
+    private lateinit var duckfeedimg : ImageView
+    private lateinit var duckplayimg : ImageView
+    private lateinit var cleanprogress : ProgressBar
+    private lateinit var playprogress : ProgressBar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_duckling)
-
-
-
-        countTextView = findViewById(R.id.textTime2)
-        cleanTextView = findViewById(R.id.cleanamount2)
-        feedbut = findViewById(R.id.feedbtn2)
-        cleanbut = findViewById(R.id.cleanbtn2)
-        playwithbut = findViewById(R.id.playbtn2)
-        happyTextView = findViewById(R.id.happyText2)
-        hungerAmount = findViewById(R.id.progressBarhunger2)
-
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_testduck)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+        countTextView = findViewById(R.id.textView2)
+        cleanTextView = findViewById(R.id.textView3)
+        feedbut = findViewById(R.id.button)
+        cleanbut = findViewById(R.id.button2)
+        playwithbut = findViewById(R.id.button3)
+        happyTextView = findViewById(R.id.textView4)
+        hungerAmount = findViewById(R.id.progressBar)
+        duckdirtimg = findViewById(R.id.duckDirt)
+        duckfeedimg = findViewById(R.id.duckfeed)
+        duckplayimg = findViewById(R.id.duckplay)
+        cleanprogress = findViewById(R.id.progressBar2)
+        playprogress = findViewById(R.id.progressBar3)
 
         // Start decreasing the number from 100 to 0
         CoroutineScope(Dispatchers.Main).launch {
@@ -56,6 +72,9 @@ abstract class MyDuckling : AppCompatActivity() {
         var enumstr: String
 
         feedbut.setOnClickListener {
+            duckdirtimg.visibility = View.INVISIBLE
+            duckplayimg.visibility = View.INVISIBLE
+            duckfeedimg.visibility = View.VISIBLE
             enumber += 50
             if (enumber > 100) {
                 enumber = 100
@@ -70,7 +89,7 @@ abstract class MyDuckling : AppCompatActivity() {
             enumstr = enumber.toString()
             countTextView.text = enumstr
             hungerAmount.progress = enumber
-            delay(100) // Delay for 100 milliseconds
+            delay(1000) // Delay for 100 milliseconds
         }
     }
 
@@ -79,12 +98,20 @@ abstract class MyDuckling : AppCompatActivity() {
         var enumstr2: String
 
         cleanbut.setOnClickListener {
+            duckdirtimg.visibility = View.VISIBLE
+            duckplayimg.visibility = View.INVISIBLE
+            duckfeedimg.visibility = View.INVISIBLE
             enumber2 += 50
             if (enumber2 > 100) {
                 enumber2 = 100
             }
 
         }
+
+
+
+
+
         while (enumber2 > 0) {
             enumber2 -= 1
             if (enumber2 < 5) {
@@ -92,8 +119,9 @@ abstract class MyDuckling : AppCompatActivity() {
             }
             enumstr2 = enumber2.toString()
             cleanTextView.text = enumstr2
+            cleanprogress.progress = enumber2
 
-            delay(100) // Delay for 100 milliseconds
+            delay(1000) // Delay for 100 milliseconds
         }
     }
 
@@ -102,6 +130,9 @@ abstract class MyDuckling : AppCompatActivity() {
         var enumstr3: String
 
         playwithbut.setOnClickListener {
+            duckdirtimg.visibility = View.INVISIBLE
+            duckplayimg.visibility = View.VISIBLE
+            duckfeedimg.visibility = View.INVISIBLE
             enumber3 += 50
             if (enumber3 > 100) {
                 enumber3 = 100
@@ -115,20 +146,10 @@ abstract class MyDuckling : AppCompatActivity() {
             }
             enumstr3 = enumber3.toString()
             happyTextView.text = enumstr3
+            playprogress.progress = enumber3
 
-            delay(100) // Delay for 100 milliseconds
+            delay(1000) // Delay for 100 milliseconds
         }
 
     }
-
-}
-
-
-
-
-
-
-
-
-
-
+    }

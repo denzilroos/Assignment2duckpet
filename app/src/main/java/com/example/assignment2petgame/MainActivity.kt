@@ -7,19 +7,20 @@ import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var newStart :Button
+    private lateinit var newStart: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         newStart = findViewById(R.id.startbttn)
 
         newStart.setOnClickListener {
 
-            val intent1 = Intent(this,MyDuckling::class.java)
+            val intent2 = Intent(this, testduck::class.java)
 
-            startActivity(intent1)
+            startActivity(intent2)
         }
 
     }
